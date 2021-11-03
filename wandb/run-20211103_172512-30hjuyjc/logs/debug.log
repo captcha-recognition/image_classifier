@@ -1,0 +1,33 @@
+2021-11-03 17:25:12,146 INFO    MainThread:28971 [wandb_setup.py:_flush():71] setting env: {}
+2021-11-03 17:25:12,146 INFO    MainThread:28971 [wandb_setup.py:_flush():71] setting login settings: {}
+2021-11-03 17:25:12,147 INFO    MainThread:28971 [wandb_init.py:_log_setup():357] Logging user logs to /Users/sjhuang/Documents/docs/image_classifier/wandb/run-20211103_172512-30hjuyjc/logs/debug.log
+2021-11-03 17:25:12,147 INFO    MainThread:28971 [wandb_init.py:_log_setup():358] Logging internal logs to /Users/sjhuang/Documents/docs/image_classifier/wandb/run-20211103_172512-30hjuyjc/logs/debug-internal.log
+2021-11-03 17:25:12,147 INFO    MainThread:28971 [wandb_init.py:init():390] calling init triggers
+2021-11-03 17:25:12,147 INFO    MainThread:28971 [wandb_init.py:init():395] wandb.init called with sweep_config: {}
+config: {}
+2021-11-03 17:25:12,147 INFO    MainThread:28971 [wandb_init.py:init():435] starting backend
+2021-11-03 17:25:12,147 INFO    MainThread:28971 [backend.py:_multiprocessing_setup():94] multiprocessing start_methods=spawn,fork,forkserver, using: spawn
+2021-11-03 17:25:12,168 INFO    MainThread:28971 [backend.py:ensure_launched():198] starting backend process...
+2021-11-03 17:25:12,178 INFO    MainThread:28971 [backend.py:ensure_launched():203] started backend process with pid: 28989
+2021-11-03 17:25:12,186 INFO    MainThread:28971 [wandb_init.py:init():444] backend started and connected
+2021-11-03 17:25:12,189 INFO    MainThread:28971 [wandb_init.py:init():503] updated telemetry
+2021-11-03 17:25:12,222 INFO    MainThread:28971 [wandb_init.py:init():533] communicating current version
+2021-11-03 17:25:16,140 WARNING MainThread:28971 [wandb_init.py:init():891] interrupted
+Traceback (most recent call last):
+  File "/opt/miniconda3/envs/dl/lib/python3.9/site-packages/wandb/sdk/wandb_init.py", line 870, in init
+    run = wi.init()
+  File "/opt/miniconda3/envs/dl/lib/python3.9/site-packages/wandb/sdk/wandb_init.py", line 534, in init
+    check = backend.interface.communicate_check_version(
+  File "/opt/miniconda3/envs/dl/lib/python3.9/site-packages/wandb/sdk/interface/interface.py", line 92, in communicate_check_version
+    ret = self._communicate_check_version(check_version)
+  File "/opt/miniconda3/envs/dl/lib/python3.9/site-packages/wandb/sdk/interface/interface.py", line 1003, in _communicate_check_version
+    result = self._communicate(rec)
+  File "/opt/miniconda3/envs/dl/lib/python3.9/site-packages/wandb/sdk/interface/interface.py", line 799, in _communicate
+    return self._communicate_async(rec, local=local).get(timeout=timeout)
+  File "/opt/miniconda3/envs/dl/lib/python3.9/site-packages/wandb/sdk/interface/router.py", line 32, in get
+    is_set = self._object_ready.wait(timeout)
+  File "/opt/miniconda3/envs/dl/lib/python3.9/threading.py", line 574, in wait
+    signaled = self._cond.wait(timeout)
+  File "/opt/miniconda3/envs/dl/lib/python3.9/threading.py", line 316, in wait
+    gotit = waiter.acquire(True, timeout)
+KeyboardInterrupt

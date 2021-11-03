@@ -13,7 +13,7 @@ from argparse import ArgumentParser
 def main(args):
     net = Classifier(args.input_shape, args.out_channel, args.save_path)
     Optim = torch.optim.SGD(net.parameters(),lr = args.lr,momentum= args.momentum)
-    Loss = nn.CrossEntropyLoss()
+    Loss = nn.CrossEntropyLoss(reduction='sum')
     train_it, val_it = train_loader(args.train_path,args.multi,keep_ratio=False)
     epochs = args.epochs
     for epoch in tqdm(range(epochs),desc = 'Training', mininterval = 3):

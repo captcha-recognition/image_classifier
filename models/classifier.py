@@ -10,7 +10,7 @@ import wandb
 class Classifier(object):
     """
     """
-    def __init__(self, input_shape, out_channel,save_path,early_stop = 100):
+    def __init__(self, input_shape, out_channel,save_path,early_stop = 100,train = True):
         super().__init__(), 
         self.val_epochs = []
         self.train_epochs = []
@@ -27,7 +27,9 @@ class Classifier(object):
         self.early_stop = early_stop
         self.early_stop_count = 0
         self.save_path = save_path
-        self.experiment = wandb.init('image classifer')
+        self.train = train 
+        if self.train:
+            self.experiment = wandb.init('image classifer')
     
     def parameters(self):
         return self.net.parameters()
@@ -107,3 +109,13 @@ class Classifier(object):
     
     def runing(self):
         return self.early_stop_count < self.early_stop
+    
+    def load(self,model_path):
+        self.net.load_state_dict(model_path)
+    
+    def predict(self,images):
+        self.net.eval()
+        out = self.net(images)
+        preds = out.argmax(dim=1)
+        return preds
+                

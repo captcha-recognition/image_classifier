@@ -169,7 +169,7 @@ def train_loader(train_path,multi = False,train_rate = config.train_rate,batch_s
            dataloader.DataLoader(val_data, batch_size=batch_size, shuffle=True,collate_fn= CaptchaCollateFn(height,width,keep_ratio,False))
 
 
-def test_loader(test_path,batch_size = config.test_batch_size, height = config.height,
+def test_loader(test_path,multi = False,batch_size = config.test_batch_size, height = config.height,
                 width = config.width,keep_ratio = True,transformer = None):
     """
 
@@ -186,7 +186,7 @@ def test_loader(test_path,batch_size = config.test_batch_size, height = config.h
     #      transforms.Normalize(mean=config.mean, std=config.std)
     #      ]
     # )
-    test_set = CaptchaDataset(test_path,train = False, transformer=transformer)
+    test_set = CaptchaDataset(test_path,multi = multi,train = False, transformer=transformer)
     return dataloader.DataLoader(test_set, batch_size=batch_size, shuffle=False,collate_fn = CaptchaCollateFn(height,width,keep_ratio,False))
 
 

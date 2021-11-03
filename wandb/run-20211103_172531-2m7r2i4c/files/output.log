@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "/Users/sjhuang/Documents/docs/image_classifier/predict.py", line 34, in <module>
-    main(args.parse_args())
-  File "/Users/sjhuang/Documents/docs/image_classifier/predict.py", line 23, in main
-    print(f'{acc}/{len(test_it.dataset)}, {acc/len(test_it.dataset)}')
-ZeroDivisionError: division by zero

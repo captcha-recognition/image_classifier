@@ -11,7 +11,7 @@ from tqdm import tqdm
 from argparse import ArgumentParser
 
 def main(args):
-    net = Classifier(args.input_shape, args.out_channel)
+    net = Classifier(args.input_shape, args.out_channel, args.save_path)
     Optim = torch.optim.SGD(net.parameters(),lr = args.lr,momentum= args.momentum)
     Loss = nn.CrossEntropyLoss()
     train_it, val_it = train_loader(args.train_path,args.multi,keep_ratio=False)
@@ -33,4 +33,5 @@ if __name__ == '__main__':
     args.add_argument('--epochs','--e',type=int,default=100,help='epochs')
     args.add_argument('--train_path','--t',type=str, required=True ,help='train_path')
     args.add_argument('--multi','--mu',type=bool,default=True,help='multi or not')
+    args.add_argument('--save_path','--s',type=str, required=True ,help='save_path')
     main(args.parse_args())

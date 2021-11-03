@@ -10,7 +10,7 @@ import wandb
 class Classifier(object):
     """
     """
-    def __init__(self, input_shape, out_channel,save_path,early_stop = 100,train = True):
+    def __init__(self, input_shape, out_channel,save_path,early_stop = 100, predict = True):
         super().__init__(), 
         self.val_epochs = []
         self.train_epochs = []
@@ -27,8 +27,8 @@ class Classifier(object):
         self.early_stop = early_stop
         self.early_stop_count = 0
         self.save_path = save_path
-        self.train = train 
-        if self.train:
+        self.predict = predict 
+        if not self.predict:
             self.experiment = wandb.init('image classifer')
     
     def parameters(self):

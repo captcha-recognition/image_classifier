@@ -16,7 +16,7 @@ def main(args):
     Loss = nn.CrossEntropyLoss(reduction='sum')
     train_it, val_it = train_loader(args.train_path,args.multi,keep_ratio=False)
     epochs = args.epochs
-    for epoch in tqdm(range(epochs),desc = 'Training', mininterval = 3):
+    for epoch in tqdm(range(epochs)):
         if net.runing():
             net.train(Optim,Loss,epoch,train_it)
             net.eval(Loss,epoch,val_it)

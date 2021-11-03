@@ -61,7 +61,7 @@ class Classifier(object):
         'val loss': self.val_loss[-1],
         'val acc':self.acc[-1],
         'epoch': epoch,
-        'images': wandb.Image(imgs[-1].cpu(),caption=f'Real:{labels[-1].item()}, Pred:{out[-1].argmax(dim=1).item()}'),
+        'images': wandb.Image(imgs[-1].cpu(),caption=f'Real:{labels[-1].item()}, Pred:{out[-1].argmax().item()}'),
     })
         if self.best_score < self.acc[-1]:
             self.best_score = self.acc[-1]

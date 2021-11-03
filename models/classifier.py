@@ -75,8 +75,8 @@ class Classifier(object):
         self.train_epochs.append(epoch)
         total_loss = 0.0
         total_count = 0
-        pbar = tqdm(total=len(data_loader), desc=f"Eval, epoch:{epoch}")
-        for imgs, labels in tqdm(data_loader):
+        pbar = tqdm(total=len(data_loader), desc=f"Train, epoch:{epoch}")
+        for imgs, labels in data_loader:
             Optim.zero_grad()
             imgs, labels = imgs.to(self.device), labels.to(self.device)
             out = self.net(imgs)

@@ -12,7 +12,7 @@ from tqdm import tqdm
 from argparse import ArgumentParser
 
 def main(args):
-    net = Classifier(args.input_shape, args.out_channel, None,train = False)
+    net = Classifier(args.input_shape, args.out_channel, None,predict= True)
     test_it = test_loader(args.test_path,multi = args.multi,keep_ratio=False)
     acc = 0
     for imgs, labels in tqdm(test_it):

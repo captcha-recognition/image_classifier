@@ -10,7 +10,7 @@ import wandb
 class Classifier(object):
     """
     """
-    def __init__(self, input_shape, out_channel,save_path,early_stop = 100, predict = True):
+    def __init__(self, input_shape, out_channel,save_path,early_stop = 100, predict = False):
         super().__init__(), 
         self.val_epochs = []
         self.train_epochs = []

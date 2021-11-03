@@ -5,6 +5,7 @@ from models.resnet import ResNet
 from tqdm import tqdm
 import os
 import time
+import wandb
 
 class Classifier(object):
     """
@@ -26,6 +27,7 @@ class Classifier(object):
         self.early_stop = early_stop
         self.early_stop_count = 0
         self.save_path = save_path
+        self.experiment = wandb.init('image classifer')
     
     def parameters(self):
         return self.net.parameters()
@@ -55,6 +57,12 @@ class Classifier(object):
         pbar.close()
         self.val_loss.append(total_loss/total_count)
         self.acc.append(total_acc/total_count)
+        self.experiment.log({
+        'val loss': self.val_loss[-1],
+        'val acc':self.acc[-1],
+        'epoch': epoch,
+        'images': wandb.Image(imgs[-1].cpu(),caption=f'Real:{labels[-1].item()}, Pred:{out[-1].argmax(dim=1).item()}'),
+    })
         if self.best_score < self.acc[-1]:
             self.best_score = self.acc[-1]
             self.early_stop_count = 0
@@ -80,6 +88,10 @@ class Classifier(object):
             pbar.update(1)
         pbar.close()
         self.train_loss.append(total_loss/total_count)
+        self.experiment.log({
+        'train loss':self.train_loss[-1],
+        'epoch': epoch
+        })
     
     def save(self):
         pid = os.getpid()
